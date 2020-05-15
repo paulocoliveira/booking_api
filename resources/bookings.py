@@ -1,5 +1,6 @@
 from flask_restful import Resource, reqparse
 from resources.data import BOOKINGS
+import json
 
 class BookingList(Resource):
     def get(self):
@@ -16,6 +17,19 @@ class BookingList(Resource):
         parser.add_argument("additional_needs")
         args =parser.parse_args()
         booking_id = int(max(BOOKINGS.keys())) + 1
+        json_ptr = {
+            "first_name": args["first_name"],
+            "last_name": args["last_name"],
+            "total_price": args["total_price"],
+            "deposit_paid": args["deposit_paid"],
+            "checkin": args["checkin"],
+            "checkout": args["checkout"],
+            "additional_needs": args["additional_needs"]
+        }
+        print("booking_id: " + booking_id)
+        print(json.dumps(json_ptr.__dict__))
+
+
         BOOKINGS[booking_id] = {
             "first_name": args["first_name"],
             "last_name": args["last_name"],
