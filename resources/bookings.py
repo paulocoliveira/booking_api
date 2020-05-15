@@ -3,6 +3,10 @@ from resources.data import BOOKINGS
 import json
 
 class BookingList(Resource):
+    def delete(self):
+        BOOKINGS = {}
+        return BOOKINGS
+
     def get(self):
         return BOOKINGS
 
@@ -16,7 +20,10 @@ class BookingList(Resource):
         parser.add_argument("checkout")
         parser.add_argument("additional_needs")
         args =parser.parse_args()
-        booking_id = int(max(BOOKINGS.keys())) + 1
+        if len(BOOKINGS) > 0:
+            booking_id = int(max(BOOKINGS.keys())) + 1
+        else:
+            booking_id = 1
         booking_id = "%i" % booking_id
         BOOKINGS[booking_id] = {
             "first_name": args["first_name"],
