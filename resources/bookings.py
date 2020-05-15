@@ -4,7 +4,7 @@ import json
 
 class BookingList(Resource):
     def delete(self):
-        BOOKINGS = {}
+        BOOKINGS.clear()
         return BOOKINGS
 
     def get(self):
