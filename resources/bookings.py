@@ -5,10 +5,10 @@ import json
 class BookingList(Resource):
     def delete(self):
         BOOKINGS.clear()
-        return BOOKINGS
+        return BOOKINGS, 204
 
     def get(self):
-        return BOOKINGS
+        return BOOKINGS, 200
 
     def post(self):
         parser = reqparse.RequestParser()
