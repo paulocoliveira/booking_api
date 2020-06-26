@@ -1,4 +1,4 @@
-# booking-flask
+# booking-api
 Booking API using Flask
 
 # Usage
