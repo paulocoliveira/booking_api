@@ -7,8 +7,16 @@ class BookingList(Resource):
         BOOKINGS.clear()
         return BOOKINGS, 204
 
+    def delete(id):
+        BOOKINGS.pop(id)
+        return BOOKINGS, 204
+
     def get(self):
         return BOOKINGS, 200
+    
+    def get(id):
+        item = BOOKINGS.get(id)
+        return item, 200
 
     def post(self):
         parser = reqparse.RequestParser()
