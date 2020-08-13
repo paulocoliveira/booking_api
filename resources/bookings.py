@@ -3,13 +3,13 @@ from resources.data import BOOKINGS
 import json
 
 class BookingList(Resource):
-    def delete(self):
-        BOOKINGS.clear()
-        return BOOKINGS, 204
-
-    # def delete(id):
-    #     BOOKINGS.pop(id)
+    # def delete(self):
+    #     BOOKINGS.clear()
     #     return BOOKINGS, 204
+
+    def delete(id):
+        BOOKINGS.pop(id)
+        return BOOKINGS, 204
 
     def get(self):
         return BOOKINGS, 200
