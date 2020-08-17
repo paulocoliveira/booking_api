@@ -18,18 +18,18 @@ def create_booking():
     BOOKINGS.append(new_booking)
     return jsonify(new_booking)
 
-@app.route('/booking')
+@app.route('/booking', methods=["GET"])
 def get_bookings():
     return jsonify({'bookings': BOOKINGS})
 
-@app.route('/booking/<int:id>')
+@app.route('/booking/<int:id>', methods=["GET"])
 def get_booking_by_id(id):
     for book in BOOKINGS:
         if book['id'] == id:
             return jsonify(book)
     return jsonify({'message': 'Booking not found!'})
 
-@app.route('/booking/<int:id>', methods="PUT")
+@app.route('/booking/<int:id>', methods=["PUT"])
 def edit_booking(id):
     request_data = request.get_json
     new_booking = {
