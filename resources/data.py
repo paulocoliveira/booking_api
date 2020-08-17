@@ -1,1 +1,1 @@
-BOOKINGS = {}
+BOOKINGS = [{}]
