@@ -2,7 +2,6 @@ from flask import Flask, jsonify, request
 from resources.data import BOOKINGS
 
 app = Flask(__name__)
-app.run()
 
 @app.route('/booking', methods=['POST'])
 def create_booking():
@@ -55,3 +54,6 @@ def delete_booking():
         if book['id'] == id:
             BOOKINGS.remove(book)
     return jsonify({'message': 'Booking not found!'})
+
+
+app.run()
