@@ -3,7 +3,7 @@ from resources.data import BOOKINGS
 
 app = Flask(__name__)
 
-@app.route('/booking', methods=['POST'])
+@app.route('/booking', methods=["POST"])
 def create_booking():
     request_data = request.get_json
     new_booking = {
@@ -29,7 +29,7 @@ def get_booking_by_id(id):
             return jsonify(book)
     return jsonify({'message': 'Booking not found!'})
 
-@app.route('/booking/<int:id>', methods='PUT')
+@app.route('/booking/<int:id>', methods="PUT")
 def edit_booking(id):
     request_data = request.get_json
     new_booking = {
@@ -48,7 +48,7 @@ def edit_booking(id):
             return jsonify(new_booking)
     return jsonify({'message': 'Booking not found!'})
 
-@app.route('/booking/<int:id>', methods=['DELETE'])
+@app.route('/booking/<int:id>', methods=["DELETE"])
 def delete_booking():
     for book in BOOKINGS:
         if book['id'] == id:
