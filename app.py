@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/booking', methods=["POST"])
 def create_booking():
     print("entrou no create")
-    request_data = request.get_json()
+    request_data = request.get_json
     print("pegou o request data")
     new_booking = {
         'first_name': request_data['first_name'],
@@ -26,16 +26,16 @@ def create_booking():
 def get_bookings():
     return jsonify({'bookings': BOOKINGS})
 
-@app.route('/booking/<string:first_name>', methods=["GET"])
-def get_booking_by_id(first_name):
+@app.route('/booking/<int:id>', methods=["GET"])
+def get_booking_by_id(id):
     for book in BOOKINGS:
-        if book['first_name'] == first_name:
+        if book['id'] == id:
             return jsonify(book)
     return jsonify({'message': 'Booking not found!'})
 
-@app.route('/booking/<string:first_name>', methods=["PUT"])
-def edit_booking(first_name):
-    request_data = request.get_json()
+@app.route('/booking/<int:id>', methods=["PUT"])
+def edit_booking(id):
+    request_data = request.get_json
     new_booking = {
         'first_name': request_data['first_name'],
         'last_name': request_data['last_name'],
@@ -47,15 +47,15 @@ def edit_booking(first_name):
     }
 
     for book in BOOKINGS:
-        if book['first_name'] == first_name:
+        if book['id'] == id:
             book.update(new_booking)
             return jsonify(new_booking)
     return jsonify({'message': 'Booking not found!'})
 
-@app.route('/booking/<string:first_name>', methods=["DELETE"])
-def delete_booking(first_name):
+@app.route('/booking/<int:id>', methods=["DELETE"])
+def delete_booking():
     for book in BOOKINGS:
-        if book['first_name'] == first_name:
+        if book['id'] == id:
             BOOKINGS.remove(book)
     return jsonify({'message': 'Booking not found!'})
 
