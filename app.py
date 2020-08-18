@@ -3,6 +3,10 @@ from resources.data import BOOKINGS
 
 app = Flask(__name__)
 
+@app.route('/', methods=["GET"])
+def home():
+    return "You are online!"
+
 @app.route('/booking', methods=["POST"])
 def create_booking():
     print("entrou no create")
