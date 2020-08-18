@@ -9,7 +9,9 @@ def home():
 
 @app.route('/booking', methods=["POST"])
 def create_booking():
+    print("entrou no create")
     request_data = request.get_json()
+    print("pegou o request data")
     new_booking = {
         'first_name': request_data['first_name'],
         'last_name': request_data['last_name'],
@@ -19,7 +21,9 @@ def create_booking():
         'checkout': request_data['checkout'],
         'additional_needs': request_data['additional_needs']
     }
+    print("montou o dicionário")
     BOOKINGS.append(new_booking)
+    print("adicionou o dicionário na lista")
     return jsonify(new_booking)
 
 @app.route('/booking', methods=["GET"])
